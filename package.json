@@ -1,0 +1,19 @@
+{
+  "name": "trade_tester",
+  "version": "1.0.0",
+  "description": "Trading Strategy Tester",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ahusseinali/trade_tester.git"
+  },
+  "author": "Ahmed Ali (a.husseinzaki@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ahusseinali/trade_tester/issues"
+  },
+  "homepage": "https://github.com/ahusseinali/trade_tester#readme"
+}
