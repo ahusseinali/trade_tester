@@ -17,12 +17,15 @@ app.view = app.view || {};
         },
 
         render: function() {
+            var xmlns = "http://www.w3.org/2000/svg";
             // Trick to append SVG Path Element into jquery selector.
-            var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            var g = document.createElementNS(xmlns, 'g');
+            var path = document.createElementNS(xmlns, 'path');
             path.setAttributeNS(null, 'd', this.options.pathBuilder.getBar(this.model));
             this.path = path;
             this.changeColor();
-            this.$el.html(this.path);
+            g.appendChild(path);
+            this.$el.html(g);
         }
 
         changeColor: function() {
