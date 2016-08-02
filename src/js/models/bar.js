@@ -5,11 +5,11 @@ app.model = app.model || {};
     'use strict';
 
     /**
-    * Bar Model. It contains single bar information.
-    *
-    * @class Bar
-    * @constructor
-    */
+     * Bar Model. It contains single bar information.
+     *
+     * @class Bar
+     * @constructor
+     */
     app.model.Bar = Backbone.Model.extend({
         /**
          * Initialize a new instance of Bar class.
