@@ -62,6 +62,16 @@ app.model = app.model || {};
         },
 
         /**
+         * Checks if the bar trends up or down.
+         *
+         * @method trendUp
+         * @return {Boolean} true if close price is higher than or equal open price. false otherwise.
+         */
+        trendUp: function() {
+            return this.close >= this.open;
+        }
+
+        /**
          * Compares two price levels to make sure they are relatively valid.
          *
          * @method _compareVals

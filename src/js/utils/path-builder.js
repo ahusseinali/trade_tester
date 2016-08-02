@@ -65,4 +65,6 @@ app.utils = app.utils || {};
         return cur;
     }
 
+    app.utils.PathBuilder = PathBuilder;
+
 })();

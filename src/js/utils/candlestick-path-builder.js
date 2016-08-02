@@ -17,10 +17,10 @@ app.utils = app.utils || {};
      * @param {Number} endPrice
      */
     var CandlestickPathBuilder = function(start, dim, startDate, endDate, startPrice, endPrice) {
-        PathBuilder.call(this, start, dim, startDate, endDate, startPrice, endPrice);
+        app.utils.PathBuilder.call(this, start, dim, startDate, endDate, startPrice, endPrice);
     };
 
-    CandlestickPathBuilder.prototype = Object.Create(PathBuilder.prototype);
+    CandlestickPathBuilder.prototype = Object.Create(app.utils.PathBuilder.prototype);
     CandlestickPathBuilder.prototype.constructor = CandlestickPathBuilder;
 
     /**
@@ -29,7 +29,7 @@ app.utils = app.utils || {};
      *
      * @method getBar
      * @param {app.Model.Bar} bar
-     * @return {SVGElement} the candlestick path representation of the bar.
+     * @return {String} the candlestick path representation of the bar.
      */
     CandlestickPathBuilder.prototype.getBar = function(bar) {
         // Create a Paper.js Path to draw a line into it:
@@ -51,6 +51,8 @@ app.utils = app.utils || {};
         path.lineTo(new paper.Point(x, first));
         path.closed = true;
 
-        return path.exportSVG();
+        return path.pathData();
     };
+
+    app.utils.CandlestickPathBuilder = CandlestickPathBuilder;
 })();
