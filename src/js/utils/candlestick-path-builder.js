@@ -20,7 +20,7 @@ app.utils = app.utils || {};
         app.utils.PathBuilder.call(this, start, dim, startDate, endDate, startPrice, endPrice);
     };
 
-    CandlestickPathBuilder.prototype = Object.Create(app.utils.PathBuilder.prototype);
+    CandlestickPathBuilder.prototype = Object.create(app.utils.PathBuilder.prototype);
     CandlestickPathBuilder.prototype.constructor = CandlestickPathBuilder;
 
     /**

@@ -16,11 +16,11 @@ app.utils = app.utils || {};
     /**
      * Returns the proper PathBuilder class based on input type.
      *
-     * @method GetBuilder
+     * @method getBuilder
      * @param {String} type
      * @return {app.utils.PathBuilder} the corresponding PathBuilder class.
      */
-    PathBuilderFactory.prototype.GetBuilder = function(type) {
+    PathBuilderFactory.prototype.getBuilder = function(type) {
         // TODO: Add More Builder types.
         switch(type) {
             case 'candlestick':

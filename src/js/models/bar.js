@@ -69,7 +69,7 @@ app.model = app.model || {};
          */
         trendUp: function() {
             return this.close >= this.open;
-        }
+        },
 
         /**
          * Compares two price levels to make sure they are relatively valid.
@@ -83,7 +83,7 @@ app.model = app.model || {};
          */
         _compareVals: function(lower, higher, nameL, nameH) {
             if(higher < lower) {
-                throw new Error('nameH ' + higher + ' is smaller than ' + nameL + ' ' + lower'.');
+                throw new Error('nameH ' + higher + ' is smaller than ' + nameL + ' ' + lower + '.');
             }
         }
     });

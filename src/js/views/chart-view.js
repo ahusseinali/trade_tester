@@ -34,8 +34,8 @@ app.view = app.view || {};
          */
         initialize: function(options) {
             this.options = {};
-            changeColor(options || {stroke: '#000', up: '#00f', down: '#f00'});
-            changeChart((options && options.chartType) ? options.chartType : 'candlestick');
+            this.changeColor(options || {stroke: '#000', up: '#00f', down: '#f00'});
+            this.changeChart((options && options.chartType) ? options.chartType : 'candlestick');
             this.model.bind('change', _.bind(this.render, this));
         },
 
@@ -52,7 +52,7 @@ app.view = app.view || {};
                 var barView = new app.view.BarView({model: bar});
                 this.$el.append(barView.render(this.options).el);
             }, this);
-        }
+        },
 
         /**
          * Changes the colors used for stroke, Up trend, Down trend.
