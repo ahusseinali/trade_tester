@@ -12,6 +12,11 @@ app.view = app.view || {};
      */
     app.view.ChartView = Backbone.View.extend({
         /**
+         * Define el as the main div where chart bars will be displayed
+         */
+         el: '.chart',
+
+        /**
          * Define the events that will get triggered in the chart
          */
         events: {
