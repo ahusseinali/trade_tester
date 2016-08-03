@@ -15,8 +15,17 @@ app.collection = app.collection || {};
         model: app.model.Bar,
 
         /**
+         * Initializes the collection with dummy data
+         *
+         * @method initialize
+         */
+        initialize: function() {
+        },
+
+        /**
          * Loads Chart data from server. This will be 1 minute chart data.
          *
+         * @method loadAllData
          */
         loadAllData: function() {
             // Assume some random values for now.

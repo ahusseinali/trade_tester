@@ -34,9 +34,12 @@ app.view = app.view || {};
          */
         initialize: function(options) {
             this.options = {};
-            this.changeColor(options || {stroke: '#000', up: '#00f', down: '#f00'});
+            this.changeColor({stroke: '#000', up: '#00f', down: '#f00'});
             this.changeChart((options && options.chartType) ? options.chartType : 'candlestick');
             this.model.bind('change', _.bind(this.render, this));
+            this.model.bind('add', _.bind(this.render, this));
+            this.model.bind('remove', _.bind(this.render, this));
+            this.model.loadAllData();
         },
 
         /**
@@ -46,10 +49,10 @@ app.view = app.view || {};
          * @method render
          */
         render: function() {
-            var bars = this.model.get('items');
-            _.each(bars, function(bar) {
+            this.$el.html('');
+            this.model.forEach(function(model) {
                 // Create BarView for each bar and assign bar to be its model.
-                var barView = new app.view.BarView({model: bar});
+                var barView = new app.view.BarView({model: model});
                 this.$el.append(barView.render(this.options).el);
             }, this);
         },

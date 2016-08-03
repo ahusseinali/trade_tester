@@ -51,7 +51,7 @@ app.utils = app.utils || {};
         path.lineTo(new paper.Point(x, first));
         path.closed = true;
 
-        return path.pathData();
+        return path.pathData;
     };
 
     app.utils.CandlestickPathBuilder = CandlestickPathBuilder;
