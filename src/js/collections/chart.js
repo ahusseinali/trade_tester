@@ -27,6 +27,10 @@ app.collection = app.collection || {};
                 new Date("2015-03-25T11:00:00"), 30, 1.1025, 1.1007, 1.1030, 1.0987));
             this.add(new app.model.Bar(
                 new Date("2015-03-25T10:00:00"), 40, 1.1070, 1.1025, 1.1070, 1.1005));
+            this.add(new app.model.Bar(
+                new Date("2015-03-25T09:00:00"), 45, 1.1065, 1.1070, 1.1073, 1.1055));
+            this.add(new app.model.Bar(
+                new Date("2015-03-25T08:00:00"), 15, 1.1045, 1.1065, 1.1070, 1.1022));
         }
     });
 })();
