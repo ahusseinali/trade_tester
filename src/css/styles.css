@@ -9,6 +9,13 @@ body {
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
+    /* hide scrollbar for IE */
+    -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for webkit browsers */
+.chart::-webkit-scrollbar {
+    display: none;
 }
 
 .bar {
