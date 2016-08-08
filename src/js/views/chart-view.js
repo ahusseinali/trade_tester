@@ -85,11 +85,12 @@ app.view = app.view || {};
             var builder = app.utils.PathBuilderFactory.getBuilder(chartType);
             // Get Window dimensions and consume only 90% of it.
             var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
-            w *= 0.9;
+            // w *= 0.9;
             var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-            h *= 0.9;
+            // h *= 0.9;
             this.options.pathBuilder =
                 new builder(this.options.offset, new paper.Point(w,h),
+                    //this.model.min(function())
                     new Date("2015-03-25T08:00:00"),
                     new Date("2015-03-25T12:00:00"),
                     1.1002,1.1073);

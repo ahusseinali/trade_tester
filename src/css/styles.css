@@ -9,7 +9,6 @@ body {
 }
 
 .bar {
-    position: absolute;
-    width: 95vw;
+    width: 20px;
     height: 95vh;
 }

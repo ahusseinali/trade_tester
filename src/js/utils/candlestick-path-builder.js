@@ -34,7 +34,8 @@ app.utils = app.utils || {};
     CandlestickPathBuilder.prototype.getBar = function(bar) {
         // Create a Paper.js Path to draw a line into it:
         var path = new paper.Path();
-        var x = this.calibrateX(bar.date);
+        // var x = this.calibrateX(bar.date);
+        var x = 10;
         var high = this.calibrateY(bar.high);
         var low = this.calibrateY(bar.low);
         var first = this.calibrateY(Math.max(bar.open, bar.close));
