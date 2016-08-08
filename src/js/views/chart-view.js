@@ -49,6 +49,7 @@ app.view = app.view || {};
          * @method render
          */
         render: function() {
+            console.log('render fired');
             this.$el.html('');
             this.model.forEach(function(model) {
                 // Create BarView for each bar and assign bar to be its model.
@@ -83,8 +84,13 @@ app.view = app.view || {};
         changeChart : function(chartType, render) {
             // TODO: Make Builder parameters dynamic (based on underlying Bar List data);
             var builder = app.utils.PathBuilderFactory.getBuilder(chartType);
+            // Get Window dimensions and consume only 90% of it.
+            var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+            w *= 0.9;
+            var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+            h *= 0.9;
             this.options.pathBuilder =
-                new builder(new paper.Point(0,0), new paper.Point(1000,800),
+                new builder(new paper.Point(0,0), new paper.Point(w,h),
                     new Date("2015-03-25T08:00:00"),
                     new Date("2015-03-25T12:00:00"),
                     1.1002,1.1073);

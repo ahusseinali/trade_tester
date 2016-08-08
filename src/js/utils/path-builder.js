@@ -36,7 +36,8 @@ app.utils = app.utils || {};
     PathBuilder.prototype.calibrateX = function(currentDate) {
         var cur = currentDate.valueOf();
         cur = (cur - this.startDate) / (this.endDate - this.startDate);
-        cur *= (this.dim.x - 30);
+        cur *= (this.dim.x - 50);
+        cur += + 25;
         cur += this.start.x;
         return cur;
     };
@@ -50,7 +51,8 @@ app.utils = app.utils || {};
      */
     PathBuilder.prototype.calibrateY = function(price) {
         var cur = (this.endPrice - price) / (this.endPrice - this.startPrice);
-        cur *= (this.dim.y - 30);
+        cur *= (this.dim.y - 50);
+        cur += + 25;
         cur += this.start.y;
         return cur;
     }

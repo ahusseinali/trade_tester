@@ -22,7 +22,9 @@ app.view = app.view || {};
          * @method initialize
          */
         initialize: function() {
-            this.el = this.make('svg');
+            this.el = this.make('svg', {
+                'class': 'bar'
+            });
             this.model.bind('change', _.bind(this.render, this));
         },
 
@@ -55,7 +57,6 @@ app.view = app.view || {};
          * @param {String} content
          */
         make: function(tagName, attributes, content) {
-            console.log("make is fired for " + tagName);
             var el = document.createElementNS('http://www.w3.org/2000/svg', tagName);
             if (attributes) $(el).attr(attributes);
             if (content) $(el).html(content);
