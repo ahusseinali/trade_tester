@@ -36,7 +36,6 @@ app.view = app.view || {};
             this.options = {};
             this.options.offset = (options && options.offset) ? options.offset : new paper.Point(0,0);
             this.changeColor({stroke: '#000', up: '#00f', down: '#f00'});
-            this.changeChart((options && options.chartType) ? options.chartType : 'candlestick');
             this.model.bind('change', _.bind(this.render, this));
             this.model.bind('add', _.bind(this.render, this));
             this.model.bind('remove', _.bind(this.render, this));
@@ -49,6 +48,9 @@ app.view = app.view || {};
          * @method render
          */
         render: function() {
+            this.options = this.options || {};
+            this.options.chartType = this.options.chartType || 'candlestick';
+            this.changeChart(this.options.chartType);
             this.el.innerHTML = '';
             this.model.forEach(function(model) {
                 // Create BarView for each bar and assign bar to be its model.
@@ -64,13 +66,10 @@ app.view = app.view || {};
          * @method render
          * @param {Object} colors
          */
-        changeColor : function(colors, render) {
+        changeColor : function(colors) {
             this.options.stroke = colors.stroke || this.options.stroke;
             this.options.up = colors.up || this.options.up;
             this.options.down = colors.down || this.options.down;
-            if(render) {
-                this.render();
-            }
         },
 
         /**
@@ -81,7 +80,6 @@ app.view = app.view || {};
          * @param {Object} colors
          */
         changeChart : function(chartType, render) {
-            // TODO: Make Builder parameters dynamic (based on underlying Bar List data);
             var builder = app.utils.PathBuilderFactory.getBuilder(chartType);
             // Get Window dimensions and consume only 90% of it.
             var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
@@ -90,10 +88,18 @@ app.view = app.view || {};
             // h *= 0.9;
             this.options.pathBuilder =
                 new builder(this.options.offset, new paper.Point(w,h),
-                    //this.model.min(function())
-                    new Date("2015-03-25T08:00:00"),
-                    new Date("2015-03-25T12:00:00"),
-                    1.1002,1.1073);
+                    this.model.min(function(bar) {
+                        return bar.date;
+                    }).date,
+                    this.model.max(function(bar) {
+                        return bar.date;
+                    }).date,
+                    this.model.min(function(bar) {
+                        return bar.low;
+                    }).low,
+                    this.model.max(function(bar) {
+                        return bar.high;
+                    }).high);
             if(render) {
                 this.render();
             }

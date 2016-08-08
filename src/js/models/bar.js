@@ -29,7 +29,6 @@ app.model = app.model || {};
             if (error) {
                 this.trigger('error', this, error);
             }
-
             this.date = date;
             this.volume = volume;
             this.open = open;
