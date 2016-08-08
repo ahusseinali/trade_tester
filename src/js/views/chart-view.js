@@ -34,6 +34,7 @@ app.view = app.view || {};
          */
         initialize: function(options) {
             this.options = {};
+            this.options.offset = (options && options.offset) ? options.offset : new paper.Point(0,0);
             this.changeColor({stroke: '#000', up: '#00f', down: '#f00'});
             this.changeChart((options && options.chartType) ? options.chartType : 'candlestick');
             this.model.bind('change', _.bind(this.render, this));
@@ -88,7 +89,7 @@ app.view = app.view || {};
             var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
             h *= 0.9;
             this.options.pathBuilder =
-                new builder(new paper.Point(0,0), new paper.Point(w,h),
+                new builder(this.options.offset, new paper.Point(w,h),
                     new Date("2015-03-25T08:00:00"),
                     new Date("2015-03-25T12:00:00"),
                     1.1002,1.1073);
