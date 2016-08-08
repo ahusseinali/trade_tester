@@ -35,7 +35,7 @@ app.view = app.view || {};
         initialize: function(options) {
             this.options = {};
             this.changeColor({stroke: '#000', up: '#00f', down: '#f00'});
-            this.changeChart((options && options.chartType) ? options.chartType : 'test');
+            this.changeChart((options && options.chartType) ? options.chartType : 'candlestick');
             this.model.bind('change', _.bind(this.render, this));
             this.model.bind('add', _.bind(this.render, this));
             this.model.bind('remove', _.bind(this.render, this));
