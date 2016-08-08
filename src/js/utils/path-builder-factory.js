@@ -26,7 +26,7 @@ app.utils = app.utils || {};
             case 'candlestick':
                 return app.utils.CandlestickPathBuilder;
             default:
-                return app.utils.CandlestickPathBuilder;
+                return app.utils.TestPathBuilder;
         }
     };
 

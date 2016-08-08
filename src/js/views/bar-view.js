@@ -11,8 +11,6 @@ app.view = app.view || {};
      * @constructor
      */
     app.view.BarView = Backbone.View.extend({
-        tagName: 'svg',
-
         events: {
 
         },
@@ -24,6 +22,7 @@ app.view = app.view || {};
          * @method initialize
          */
         initialize: function() {
+            this.el = this.make('svg');
             this.model.bind('change', _.bind(this.render, this));
         },
 
@@ -36,17 +35,31 @@ app.view = app.view || {};
          * @param {Object} options
          */
         render: function(options) {
-            var xmlns = "http://www.w3.org/2000/svg";
             // Trick to append SVG Path Element into jquery selector.
-            var g = document.createElementNS(xmlns, 'g');
-            var path = document.createElementNS(xmlns, 'path');
-            path.setAttributeNS(null, 'd', options.pathBuilder.getBar(this.model));
-            path.setAttributeNS(null, 'stroke', options.stroke);
-            path.setAttributeNS(null, 'fill', this.model.trendUp() ? options.up : options.down);
-            this.path = path;
-            g.appendChild(path);
-            this.$el.html(g);
+            var path = this.make('path', {
+                d: options.pathBuilder.getBar(this.model),
+                stroke: options.stroke,
+                fill: this.model.trendUp() ? options.up : options.down
+            });
+            this.el.appendChild(path);
             return this;
+        },
+
+        /**
+         * Custom make method needed as backbone does not support creation of
+         * namespaced HTML elements.
+         *
+         * @method makeElement
+         * @param {String} tagName
+         * @param {Object} attributes
+         * @param {String} content
+         */
+        make: function(tagName, attributes, content) {
+            console.log("make is fired for " + tagName);
+            var el = document.createElementNS('http://www.w3.org/2000/svg', tagName);
+            if (attributes) $(el).attr(attributes);
+            if (content) $(el).html(content);
+            return el;
         }
-    })
+    });
 })();

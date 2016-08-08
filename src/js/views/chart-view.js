@@ -35,7 +35,7 @@ app.view = app.view || {};
         initialize: function(options) {
             this.options = {};
             this.changeColor({stroke: '#000', up: '#00f', down: '#f00'});
-            this.changeChart((options && options.chartType) ? options.chartType : 'candlestick');
+            this.changeChart((options && options.chartType) ? options.chartType : 'test');
             this.model.bind('change', _.bind(this.render, this));
             this.model.bind('add', _.bind(this.render, this));
             this.model.bind('remove', _.bind(this.render, this));
@@ -84,7 +84,7 @@ app.view = app.view || {};
             // TODO: Make Builder parameters dynamic (based on underlying Bar List data);
             var builder = app.utils.PathBuilderFactory.getBuilder(chartType);
             this.options.pathBuilder =
-                new builder(new paper.Point(0,0), new paper.Point(1900,1500),
+                new builder(new paper.Point(0,0), new paper.Point(1000,800),
                     new Date("2015-03-25T08:00:00"),
                     new Date("2015-03-25T12:00:00"),
                     1.1002,1.1073);
