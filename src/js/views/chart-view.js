@@ -39,7 +39,6 @@ app.view = app.view || {};
             this.model.bind('change', _.bind(this.render, this));
             this.model.bind('add', _.bind(this.render, this));
             this.model.bind('remove', _.bind(this.render, this));
-            this.model.loadAllData();
         },
 
         /**
@@ -49,8 +48,7 @@ app.view = app.view || {};
          * @method render
          */
         render: function() {
-            console.log('render fired');
-            this.$el.html('');
+            this.el.innerHTML = '';
             this.model.forEach(function(model) {
                 // Create BarView for each bar and assign bar to be its model.
                 var barView = new app.view.BarView({model: model});
