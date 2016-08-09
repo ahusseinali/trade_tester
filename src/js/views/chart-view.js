@@ -36,9 +36,13 @@ app.view = app.view || {};
             this.options = {};
             this.options.offset = (options && options.offset) ? options.offset : new paper.Point(0,0);
             this.changeColor({stroke: '#000', up: '#00f', down: '#f00'});
-            this.model.bind('change', _.bind(this.render, this));
-            this.model.bind('add', _.bind(this.render, this));
-            this.model.bind('remove', _.bind(this.render, this));
+            var renderWithScroll = function() {
+                this.render();
+                this.scrollToEnd();
+            };
+            this.model.bind('change', _.bind(renderWithScroll, this));
+            this.model.bind('add', _.bind(renderWithScroll, this));
+            this.model.bind('remove', _.bind(renderWithScroll, this));
         },
 
         /**
@@ -46,6 +50,7 @@ app.view = app.view || {};
          * This method triggers the render function of all underlying Bar Views.
          *
          * @method render
+         * @param {boolean} noScroll
          */
         render: function() {
             this.options = this.options || {};
@@ -103,7 +108,16 @@ app.view = app.view || {};
             if(render) {
                 this.render();
             }
+        },
 
+        /**
+         * Automatically scroll element to the rightmost position.
+         * This method is triggered at any change in the model.
+         *
+         * @method scrollToEnd
+         */
+        scrollToEnd: function() {
+            this.el.scrollLeft = this.el.scrollWidth;
         }
     });
 })();
