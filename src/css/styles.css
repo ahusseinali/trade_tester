@@ -4,9 +4,8 @@ body, .chart-container {
     margin: 0;
 }
 .chart {
-    width: 90%;
     height: 90%;
-    margin: 0 auto auto 0;
+    padding: 0;
     display: flex;
     overflow-x: auto;
     overflow-y: hidden;
@@ -17,6 +16,11 @@ body, .chart-container {
 /* Hide scrollbar for webkit browsers */
 .chart::-webkit-scrollbar {
     display: none;
+}
+
+.prices {
+    height: 90%;
+    padding: 0;
 }
 
 .bar {
