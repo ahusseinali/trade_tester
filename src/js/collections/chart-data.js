@@ -11,7 +11,7 @@ app.collection = app.collection || {};
     * @class Chart
     * @constructor
     */
-    app.collection.Chart = Backbone.Collection.extend({
+    app.collection.ChartData = Backbone.Collection.extend({
         model: app.model.Bar,
 
         /**
